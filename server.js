@@ -1,28 +1,49 @@
 const express = require('express');
+const path = require('path');
+
 const app = express();
+
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.set('view engine', 'ejs')
-
-const port = process.env.PORT || 3000;
-
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
-app.post('/', (req, res) => {
-    res.send('This is the post request');
+app.get('/about', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'about.html'));
 });
 
-app.put('/', (req, res) => {
-    res.send('This is the put http request');
+app.get('/contact', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'contact.html'));
 });
 
-app.delete('/', (req, res) => {
-    res.send('This is the delete http request');
-})
+app.get('/posts', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'posts.html'));
+});
 
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+app.post('/posts', (req, res) => {
+  res.send('Created a new post');
+});
+
+app.put('/posts/:id', (req, res) => {
+  const postId = req.params.id;
+  res.send(`Updated post with ID: ${postId}`);
+});
+
+app.patch('/posts/:id', (req, res) => {
+  const postId = req.params.id;
+  res.send(`Partially updated post with ID: ${postId}`);
+});
+
+app.delete('/posts/:id', (req, res) => {
+  const postId = req.params.id;
+  res.send(`Deleted post with ID: ${postId}`);
+});
+
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

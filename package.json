@@ -3,5 +3,24 @@
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "nodemon": "^2.0.12"
-  }
+  },
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "name": "tech-blog",
+  "version": "1.0.0",
+  "description": "A tech blog designed with NodeJS where are multiple tech articles that you can view and comment on them as auser",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "github.com/bogdan-ene/techBlog"
+  },
+  "keywords": [
+    "tech",
+    "blog"
+  ],
+  "author": "Ionut Bogdan Ene",
+  "license": "ISC"
 }
