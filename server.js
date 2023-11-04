@@ -9,38 +9,46 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'index.html'));
+  res.render('index');
+});
+
+app.get('/articles', (req, res) => {
+  res.render('articles');
 });
 
 app.get('/about', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'about.html'));
+  res.render('about');
 });
 
 app.get('/contact', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'contact.html'));
+  res.render('contact');
 });
 
 app.get('/posts', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'posts.html'));
+  res.render('posts');
 });
 
-app.post('/posts', (req, res) => {
-  res.send('Created a new post');
+app.get('/5g-article', (req, res) => {
+  res.render('impact-of-5g');
 });
 
-app.put('/posts/:id', (req, res) => {
-  const postId = req.params.id;
-  res.send(`Updated post with ID: ${postId}`);
+app.post('/5g-article', (req, res) => {
+  res.send('Posted a new comment on the 5G article');
 });
 
-app.patch('/posts/:id', (req, res) => {
-  const postId = req.params.id;
-  res.send(`Partially updated post with ID: ${postId}`);
+app.put('/5g-article/:id', (req, res) => {
+  const commentId = req.params.id;
+  res.send(`Updated comment with ID ${commentId} on the 5G article`);
 });
 
-app.delete('/posts/:id', (req, res) => {
-  const postId = req.params.id;
-  res.send(`Deleted post with ID: ${postId}`);
+app.patch('/5g-article/:id', (req, res) => {
+  const commentId = req.params.id;
+  res.send(`Partially updated comment with ID ${commentId} on the 5G article`);
+});
+
+app.delete('/5g-article/:id', (req, res) => {
+  const commentId = req.params.id;
+  res.send(`Deleted comment with ID ${commentId} on the 5G article`);
 });
 
 const PORT = 3000;

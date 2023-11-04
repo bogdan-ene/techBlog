@@ -12,7 +12,11 @@
   "version": "1.0.0",
   "description": "A tech blog designed with NodeJS where are multiple tech articles that you can view and comment on them as auser",
   "main": "server.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "tailwind": "^4.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "github.com/bogdan-ene/techBlog"
