@@ -3,57 +3,28 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Blog</title>
+    <title>Welcome to My Tech Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
-    <header>
-        <h1>Tech Blog</h1>
-        <nav>
-          <%- include('nav') %>
-        </nav>
-    </header>
+    <%- include('nav') %>
 
-    <aside>
-        <%- include('sidebar') %>
-    </aside>
+    <section class="section">
+        <div class="container">
+            <h1 class="title is-1 has-text-centered">Welcome to My Tech Blog</h1>
+            <p class="has-text-centered">Our tech blog aims to keep you up to date with the latest trends and news in the world of technology. Whether you are an industry professional or simply an enthusiast, we provide in-depth analysis and thought-provoking articles on a wide range of tech topics.</p>
+            <p class="has-text-centered">Explore our collection of articles, where we delve into everything from artificial intelligence and cybersecurity to software development and emerging technologies. Join us as we unravel the complexities of the digital world and its impact on society, business, and everyday life.</p>
+            <div class="has-text-centered mt-5">
+                <img src="/assets/geometric.jpg" alt="Geometric Image" />
+            </div>
+        </div>
+    </section>
 
-    <div class="container">
-        <main>
-            <article>
-                <h2>Article Title</h2>
-                <p>Article content goes here...</p>
-            </article>
-
-            
-
-        </main>
-
-        <aside>
-            <section>
-                <h2>Popular Articles</h2>
-                <ul>
-                    <li>Technology Trends</li>
-                    <li>Product Reviews</li>
-                    <li>Software Development</li>
-                </ul>
-            </section>
-
-            <section>
-                <h2>Categories</h2>
-                <ul>
-                    <li>Tech News</li>
-                    <li>Gadgets</li>
-                    <li>Programming</li>
-                </ul>
-            </section>
-        </aside>
-    </div>
-
-    <footer>
-        <%- include('footer') %>
-    </footer>
+    <%- include('footer') %>
 </body>
 
 </html>

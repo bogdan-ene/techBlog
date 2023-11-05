@@ -11,8 +11,7 @@
     <%- include('nav') %>
 
     <div class="container mx-auto mt-8">
-        <%- include('sidebar') %>
-
+        
         <main class="w-3/4 p-4 bg-white rounded-lg shadow-lg">
             <h1 class="text-3xl font-bold mb-4">Devices of the Future</h1>
             <p class="text-lg text-gray-800 leading-relaxed">As technological advancements continue to accelerate, the future of devices appears to be one defined by seamless integration, intelligent automation, and unparalleled connectivity. From smart home appliances and wearable technology to advanced robotics and virtual reality, the devices of the future are set to redefine the way we interact with the world around us.</p>

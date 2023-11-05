@@ -1,14 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Contact Us</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact My Tech Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
-<body>
-    <%- include('nav') %>
-    <%- include('sidebar') %>
-    <h1>Contact Us</h1>
-    <p>Feel free to write us using one of the following means of commmunication</p>
-    <%- include('footer') %>
+
+<body class="bg-gray-100">
+    <% include('nav') %>
+    <section class="section">
+        <div class="container">
+            <h1 class="title is-1 has-text-centered">Contact My Tech Blog</h1>
+            <figure class="image is-16by9">
+                <img src="/assets/about.jpg" alt="About Image">
+            </figure>
+            <div class="content has-text-centered">
+                <p class="is-size-5">
+                    For any inquiries or questions, please feel free to contact us using the information below. Our team is dedicated to providing timely and informative responses to help you with your technology-related needs and concerns.
+                </p>
+                <p class="is-size-5 mt-4">
+                    Email: example@example.com
+                </p>
+                <p class="is-size-5">
+                    Phone: 123-456-7890
+                </p>
+                <p class="is-size-5">
+                    Address: 123 Street, City, Country
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <% include('footer') %>
 </body>
+
 </html>
- 

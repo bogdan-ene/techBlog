@@ -12,6 +12,10 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
+app.get('/home', (req, res) => {
+  res.render('home');
+});
+
 app.get('/articles', (req, res) => {
   res.render('articles');
 });
@@ -22,10 +26,6 @@ app.get('/about', (req, res) => {
 
 app.get('/contact', (req, res) => {
   res.render('contact');
-});
-
-app.get('/posts', (req, res) => {
-  res.render('posts');
 });
 
 app.get('/5g-article', (req, res) => {

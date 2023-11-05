@@ -10,31 +10,12 @@
 </head>
 
 <body class="bg-gray-100">
-    <% include('nav') %>
-    <% include('sidebar') %>
-    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="#">
-                <h1 class="title is-2 has-text-white">My Tech Blog</h1>
-            </a>
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-        </div>
-
-        <div id="navbarMenu" class="navbar-menu">
-            <div class="navbar-end">
-                <a href="#" class="navbar-item has-text-white">Home</a>
-                <a href="#" class="navbar-item has-text-white">Articles</a>
-                <a href="#" class="navbar-item has-text-white">About</a>
-                <a href="#" class="navbar-item has-text-white">Contact</a>
-            </div>
-        </div>
-    </nav>
-
+    <%- include('nav') %>
+   
     <div class="container max-w-2xl mx-auto mt-6">
+        <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+        </nav>
+
         <div class="box">
             <h2 class="title is-3 has-text-centered">Welcome to My Tech Blog</h2>
             <p class="subtitle is-5 has-text-centered">Explore the latest in technology and innovation.</p>
@@ -46,9 +27,7 @@
                 <a href="/green-energy" class="button is-primary is-fullwidth is-rounded mt-4">Read our latest article on the link between Green energy and technology</a>
             </div>
         </div>
-    </div>
 
-    <div class="container max-w-2xl mx-auto mt-6">
         <div class="box">
             <div class="content">
                 <p><strong>Email</strong></p>
@@ -60,8 +39,10 @@
             </div>
             <p class="has-text-centered mt-4"> &copy; 2023 Your Tech Blog</p>
         </div>
+
+        <%- include('footer') %>
     </div>
-    <% include('footer') %>
+
 </body>
 
 </html>
