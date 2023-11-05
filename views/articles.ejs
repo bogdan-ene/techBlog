@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to My Tech Blog</title>
 </head>
+
 <body class="bg-gray-100 flex items-center justify-center h-screen">
+    <%- include('nav') %>
+    <%- include('sidebar') %>
     <div class="max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-20">
         <div>
             <h2 class="text-gray-800 text-3xl font-semibold">Welcome to My Tech Blog</h2>
@@ -18,5 +21,6 @@
             </a>
         </div>
     </div>
+    <%- include('footer') %>
 </body>
 </html>

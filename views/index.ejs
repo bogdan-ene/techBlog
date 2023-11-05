@@ -11,13 +11,13 @@
     <header>
         <h1>Tech Blog</h1>
         <nav>
-            <ul>
-                <li><a href="/articles">Articles</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
+          <%- include('nav') %>
         </nav>
     </header>
+
+    <aside>
+        <%- include('sidebar') %>
+    </aside>
 
     <div class="container">
         <main>
@@ -52,7 +52,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2023 Tech Blog</p>
+        <%- include('footer') %>
     </footer>
 </body>
 
