@@ -51,6 +51,75 @@ app.delete('/5g-article/:id', (req, res) => {
   res.send(`Deleted comment with ID ${commentId} on the 5G article`);
 });
 
+app.get('/ai', (req, res) => {
+  res.render('ai');
+});
+
+app.post('/ai', (req, res) => {
+  res.send('Posted a new comment on the AI article');
+});
+
+app.put('/ai/:id', (req, res) => {
+  const commentId = req.params.id;
+  res.send(`Updated comment with ID ${commentId} on the AI article`);
+});
+
+app.patch('/ai/:id', (req, res) => {
+  const commentId = req.params.id;
+  res.send(`Partially updated comment with ID ${commentId} on the AI article`);
+});
+
+app.delete('/ai/:id', (req, res) => {
+  const commentId = req.params.id;
+  res.send(`Deleted comment with ID ${commentId} on the AI article`);
+});
+
+app.get('/green-energy', (req, res) => {
+  res.render('green-energy');
+});
+
+app.post('/green-energy', (req, res) => {
+  res.send('Posted a new comment on the Green energy and technology article');
+});
+
+app.put('/green-energy/:id', (req, res) => {
+  const commentId = req.params.id;
+  res.send(`Updated comment with ID ${commentId} on the Green energy and technology article`);
+});
+
+app.patch('/green-energy/:id', (req, res) => {
+  const commentId = req.params.id;
+  res.send(`Partially updated comment with ID ${commentId} on the Green energy and technology article`);
+});
+
+app.delete('/green-energy/:id', (req, res) => {
+  const commentId = req.params.id;
+  res.send(`Deleted comment with ID ${commentId} on the Green energy and technology article`);
+});
+
+app.get('/future-devices', (req, res) => {
+  res.render('future-devices');
+});
+
+app.post('/future-devices', (req, res) => {
+  res.send('Posted a new comment on the Devices of the future article');
+});
+
+app.put('/future-devices/:id', (req, res) => {
+  const commentId = req.params.id;
+  res.send(`Updated comment with ID ${commentId} on the Devices of the future article`);
+});
+
+app.patch('/future-devices/:id', (req, res) => {
+  const commentId = req.params.id;
+  res.send(`Partially updated comment with ID ${commentId} on the Devices of the future article`);
+});
+
+app.delete('/future-devices/:id', (req, res) => {
+  const commentId = req.params.id;
+  res.send(`Deleted comment with ID ${commentId} on the Devices of the future article`);
+});
+
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

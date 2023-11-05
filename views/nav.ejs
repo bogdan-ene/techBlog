@@ -1,16 +1,34 @@
-<nav class="bg-gray-800">
-    <ul class="flex items-center justify-between px-4 py-3">
-        <li class="mr-6">
-            <a href="/" class="text-white hover:text-gray-300">Home</a>
-        </li>
-        <li class="mr-6">
-            <a href="/about" class="text-white hover:text-gray-300">About</a>
-        </li>
-        <li class="mr-6">
-            <a href="/contact" class="text-white hover:text-gray-300">Contact</a>
-        </li>
-        <li class="mr-6">
-            <a href="/articles" class="text-white hover:text-gray-300">Articles</a>
-        </li>
-    </ul>
-</nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to My Tech Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+</head>
+<body>
+
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="#">
+                <h1 class="title is-3 has-text-white">Your Tech Blog</h1>
+            </a>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a href="/" class="navbar-item has-text-white">Home</a>
+                <a href="/articles" class="navbar-item has-text-white">Articles</a>
+                <a href="/about" class="navbar-item has-text-white">About</a>
+                <a href="/contact" class="navbar-item has-text-white">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+</body>
+</html>
