@@ -5,23 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Green Energy and Technology</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
 </head>
 
 <body class="bg-gray-100">
-    <% include('nav') %>
+    <%- include('nav') %>
 
-    <div class="container mx-auto mt-8">
-        <% include('sidebar') %>
-
-        <main class="w-3/4 p-4 bg-white rounded-lg shadow-lg">
-            <h1 class="text-3xl font-bold mb-4">Green Energy and Technology</h1>
-            <p class="text-lg text-gray-800 leading-relaxed">The intersection of green energy and technology has become a focal point in the ongoing effort to combat climate change and environmental degradation. With the advent of renewable energy sources such as solar, wind, and hydroelectric power, the potential for creating a sustainable and eco-friendly energy infrastructure has never been greater.</p>
-            <p class="text-lg text-gray-800 leading-relaxed mt-4">Technology plays a crucial role in the development and optimization of green energy solutions, enabling the efficient harnessing, storage, and distribution of clean energy. Innovations in battery technology, smart grid systems, and energy-efficient appliances are paving the way for a future that relies less on fossil fuels and more on sustainable, environmentally friendly alternatives.</p>
-            <p class="text-lg text-gray-800 leading-relaxed mt-4">As the world grapples with the challenges posed by climate change, the integration of green energy and technology represents a promising path forward, one that emphasizes the importance of sustainability, conservation, and the preservation of our planet's natural resources.</p>
-        </main>
+    <div class="container mx-auto mt-6">
+        <div class="columns is-centered">
+            <div class="column is-8">
+                <figure class="image is-16by9 mb-5">
+                    <img src="/assets/green.jpg" alt="Green Energy" />
+                </figure>
+                <div class="box">
+                    <h1 class="title is-3">Green Energy and Technology</h1>
+                    <p class="subtitle is-5 mt-4">The intersection of green energy and technology has become a focal point in the ongoing effort to combat climate change and environmental degradation. With the advent of renewable energy sources such as solar, wind, and hydroelectric power, the potential for creating a sustainable and eco-friendly energy infrastructure has never been greater.</p>
+                    <p class="subtitle is-5 mt-4">Technology plays a crucial role in the development and optimization of green energy solutions, enabling the efficient harnessing, storage, and distribution of clean energy. Innovations in battery technology, smart grid systems, and energy-efficient appliances are paving the way for a future that relies less on fossil fuels and more on sustainable, environmentally friendly alternatives.</p>
+                    <p class="subtitle is-5 mt-4">As the world grapples with the challenges posed by climate change, the integration of green energy and technology represents a promising path forward, one that emphasizes the importance of sustainability, conservation, and the preservation of our planet's natural resources.</p>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <% include('footer') %>
+    <%- include('footer') %>
 </body>
 
 </html>

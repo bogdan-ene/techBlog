@@ -10,25 +10,23 @@
 </head>
 
 <body class="bg-gray-100">
-    <% include('nav') %>
-    <section class="section">
-        <div class="container">
-            <h1 class="title is-1 has-text-centered">The Impact of 5G Technology on the Future of IoT and Connectivity</h1>
-            <figure class="image is-16by9">
-                <img src="/assets/5g.jpg" alt="5G Network">
-            </figure>
-            <div class="content has-text-centered">
-                <p class="is-size-5">
-                    In the era of rapid technological advancement, the emergence of 5G technology has brought forth unprecedented opportunities for the Internet of Things (IoT) and connectivity. With its remarkable bandwidth and minimal latency, 5G is poised to revolutionize the way devices interact and exchange data, paving the way for a new era of seamless connectivity and real-time information processing.
-                </p>
-                <p class="is-size-5 mt-4">
-                    As industries harness the potential of 5G, the implications for IoT applications are profound, enabling the development of innovative solutions across diverse sectors, including healthcare, manufacturing, transportation, and more. The integration of 5G technology not only facilitates the proliferation of interconnected devices but also lays the groundwork for the implementation of advanced technologies such as autonomous vehicles, smart cities, and immersive virtual experiences.
-                </p>
+    <%- include('nav') %>
+    <div class="container mx-auto mt-6">
+        <div class="columns is-centered">
+            <div class="column is-8">
+                <figure class="image is-16by9 mb-5">
+                    <img src="/assets/5g.jpg" alt="5G Network">
+                </figure>
+                <div class="box">
+                    <h1 class="title is-3">The Impact of 5G Technology on the Future of IoT and Connectivity</h1>
+                    <p class="subtitle is-5 mt-4 has-text-centered">In the era of rapid technological advancement, the emergence of 5G technology has brought forth unprecedented opportunities for the Internet of Things (IoT) and connectivity. With its remarkable bandwidth and minimal latency, 5G is poised to revolutionize the way devices interact and exchange data, paving the way for a new era of seamless connectivity and real-time information processing.</p>
+                    <p class="subtitle is-5 mt-4 has-text-centered">As industries harness the potential of 5G, the implications for IoT applications are profound, enabling the development of innovative solutions across diverse sectors, including healthcare, manufacturing, transportation, and more. The integration of 5G technology not only facilitates the proliferation of interconnected devices but also lays the groundwork for the implementation of advanced technologies such as autonomous vehicles, smart cities, and immersive virtual experiences.</p>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <% include('footer') %>
+    <%- include('footer') %>
 </body>
 
 </html>
