@@ -8,6 +8,11 @@
     <title>Welcome to My Tech Blog</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .modal-card {
+            max-width: 50%;
+        }
+    </style>
 </head>
 
 <body>
@@ -16,15 +21,188 @@
     <section class="section">
         <div class="container">
             <h1 class="title is-1 has-text-centered">Welcome to My Tech Blog</h1>
-            <p class="has-text-centered">Our tech blog aims to keep you up to date with the latest trends and news in the world of technology. Whether you are an industry professional or simply an enthusiast, we provide in-depth analysis and thought-provoking articles on a wide range of tech topics.</p>
-            <p class="has-text-centered">Explore our collection of articles, where we delve into everything from artificial intelligence and cybersecurity to software development and emerging technologies. Join us as we unravel the complexities of the digital world and its impact on society, business, and everyday life.</p>
+
             <div class="has-text-centered mt-5">
-                <img src="/assets/geometric.jpg" alt="Geometric Image" />
+                <button onclick="toggleModal()" class="button is-primary is-rounded">Add New Article</button>
+            </div>
+
+            <div class="has-text-centered mt-6">
+                <h2 class="title is-3">All Categories</h2>
+                <div class="columns is-centered">
+                    <div class="column is-one-quarter">
+                        <div class="box">
+                            <p class="title is-5">Internet</p>
+                            <p>Number of posts: 2</p>
+                        </div>
+                    </div>
+                    <div class="column is-one-quarter">
+                        <div class="box">
+                            <p class="title is-5">AI</p>
+                            <p>Number of posts: 3</p>
+                        </div>
+                    </div>
+                    <div class="column is-one-quarter">
+                        <div class="box">
+                            <p class="title is-5">Green Tech</p>
+                            <p>Number of posts: 1</p>
+                        </div>
+                    </div>
+                    <div class="column is-one-quarter">
+                        <div class="box">
+                            <p class="title is-5">Future Devices</p>
+                            <p>Number of posts: 4</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="has-text-centered mt-6">
+                <h2 class="title is-3">Latest Articles</h2>
+                <div class="columns is-multiline is-centered">
+                    <div class="column is-half" data-article="1">
+                        <div class="card">
+                            <div class="card-content">
+                                <p class="title is-4">Article about 5G Technology</p>
+                                <p>Exploring the groundbreaking advancements and potential of the fifth generation of wireless technology.</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="#" class="card-footer-item">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-half" data-article="2">
+                        <div class="card">
+                            <div class="card-content">
+                                <p class="title is-4">Article on Devices of the Future</p>
+                                <p>Discovering the cutting-edge devices that are shaping the future of technology and innovation.</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="#" class="card-footer-item">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-half" data-article="3">
+                        <div class="card">
+                            <div class="card-content">
+                                <p class="title is-4">Article about AI</p>
+                                <p>Unveiling the transformative impact and applications of Artificial Intelligence in various industries and everyday life.</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="#" class="card-footer-item">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-half" data-article="4">
+                        <div class="card">
+                            <div class="card-content">
+                                <p class="title is-4">Article about the Relationship between Green Energy and Technology</p>
+                                <p>Examining the symbiotic relationship between the adoption of green energy solutions and technological advancements for a sustainable future.</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="#" class="card-footer-item">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="has-text-centered mt-6">
+                <img src="/assets/geometric.jpg" alt="Geometric Image" style="max-width: 100%; height: auto;" />
             </div>
         </div>
     </section>
 
     <%- include('footer') %>
+
+    <div id="modal" class="modal">
+        <div class="modal-background" onclick="toggleModal()"></div>
+        <div class="modal-content">
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Add New Article</p>
+                    <button class="delete" aria-label="close" onclick="toggleModal()"></button>
+                </header>
+                <section class="modal-card-body">
+                    <form onsubmit="submitForm(event)">
+                        <div class="field">
+                            <label class="label">Category</label>
+                            <div class="control">
+                                <div class="select">
+                                    <select id="categorySelect">
+                                        <option value="Internet">Internet</option>
+                                        <option value="AI">AI</option>
+                                        <option value="Green Tech">Green Tech</option>
+                                        <option value="Future Devices">Future Devices</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Author</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Enter your name" id="authorInput" required>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Subject</label>
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Enter the article subject" id="subjectInput" required>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Article</label>
+                            <div class="control">
+                                <textarea class="textarea" placeholder="Enter your article" id="articleInput" required></textarea>
+                            </div>
+                        </div>
+
+                        <div class="field is-grouped">
+                            <div class="control">
+                                <button type="submit" class="button is-link">Submit</button>
+                            </div>
+                            <div class="control">
+                                <button type="button" class="button is-link is-light" onclick="toggleModal()">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleModal() {
+            const modal = document.getElementById('modal');
+            modal.classList.toggle('is-active');
+        }
+
+        function submitForm(event) {
+            event.preventDefault();
+            const category = document.getElementById('categorySelect').value;
+            const author = document.getElementById('authorInput').value;
+            const subject = document.getElementById('subjectInput').value;
+            const article = document.getElementById('articleInput').value;
+
+            const articlesContainer = document.querySelector('.is-multiline');
+            const newArticle = document.createElement('div');
+            newArticle.classList.add('column', 'is-half');
+            newArticle.innerHTML = `
+                <div class="card">
+                    <div class="card-content">
+                        <p class="title is-4">${subject}</p>
+                        <p>${article}</p>
+                        <p>Author: ${author}</p>
+                    </div>
+                </div>
+            `;
+            articlesContainer.prepend(newArticle);
+
+            toggleModal();
+        }
+    </script>
 </body>
 
 </html>
