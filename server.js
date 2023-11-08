@@ -1,7 +1,40 @@
 const express = require('express');
 const path = require('path');
-
 const app = express();
+const { mongoClient } = require('mongodb');
+
+const uri = process.env.MONGODB_URI;
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+async function run() {
+  try {
+    await client.connect();
+    console.log('Connected to the database');
+  } catch (err) {
+    console.error(err);
+  } finally {
+    await client.close();
+  }
+}
+run().catch(console.dir);
+
+async function run() {
+  try {
+    await client.connect();
+    const database = client.db('yourDatabaseName');
+    const collection = database.collection('yourCollectionName');
+
+    const result = await collection.insertOne({ key: 'value' });
+    console.log('Document inserted with _id:', result.insertedId);
+  } catch (err) {
+    console.error(err);
+  } finally {
+    await client.close();
+  }
+}
+
+run().catch(console.dir);
+
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
