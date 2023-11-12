@@ -12,6 +12,22 @@
         .modal-card {
             max-width: 50%;
         }
+
+        #addCategoryModal {
+            max-width: 50%;
+            margin: auto;
+        }
+
+        .category-labels {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .category-label {
+            margin: 0.5rem;
+        }
     </style>
 </head>
 
@@ -26,80 +42,49 @@
                 <button onclick="toggleModal()" class="button is-primary is-rounded">Add New Article</button>
             </div>
 
-            <div class="has-text-centered mt-6">
-                <h2 class="title is-3">All Categories</h2>
-                <div class="columns is-centered">
-                    <div class="column is-one-quarter">
-                        <div class="box">
-                            <p class="title is-5">Internet</p>
-                            <p>Number of posts: 2</p>
-                        </div>
-                    </div>
-                    <div class="column is-one-quarter">
-                        <div class="box">
-                            <p class="title is-5">AI</p>
-                            <p>Number of posts: 3</p>
-                        </div>
-                    </div>
-                    <div class="column is-one-quarter">
-                        <div class="box">
-                            <p class="title is-5">Green Tech</p>
-                            <p>Number of posts: 1</p>
-                        </div>
-                    </div>
-                    <div class="column is-one-quarter">
-                        <div class="box">
-                            <p class="title is-5">Future Devices</p>
-                            <p>Number of posts: 4</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="has-text-centered mt-5">
+                <button onclick="openAddCategoryModal()" class="button is-primary is-rounded">Add New Category</button>
             </div>
 
-            <div class="has-text-centered mt-6">
+            <div id="categoryList" class="has-text-centered mt-6 category-labels">
+                <h2 class="title is-3">All Categories</h2>
+                <span class="tag is-primary category-label">#5g</span>
+                <span class="tag is-primary category-label">#devices</span>
+                <span class="tag is-primary category-label">#ai</span>
+                <span class="tag is-primary category-label">#greenenergy</span>
+                <!-- Other categories will be dynamically inserted here -->
+            </div>
+
+            <div id="latestPosts" class="has-text-centered mt-6">
                 <h2 class="title is-3">Latest Articles</h2>
                 <div class="columns is-multiline is-centered">
-                    <div class="column is-half" data-article="1">
+                    <div class="column is-half">
                         <div class="card">
                             <div class="card-content">
                                 <p class="title is-4">Article about 5G Technology</p>
-                                <p>Exploring the groundbreaking advancements and potential of the fifth generation of wireless technology.</p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="#" class="card-footer-item">Read More</a>
+                                <p>Explore the revolutionary world of 5G technology and its impact on communication and connectivity.</p>
+                                <p>Author: John Doe</p>
+                                <p>Date: November 12, 2023</p>
                             </div>
                         </div>
                     </div>
-                    <div class="column is-half" data-article="2">
+                    <div class="column is-half">
                         <div class="card">
                             <div class="card-content">
                                 <p class="title is-4">Article on Devices of the Future</p>
-                                <p>Discovering the cutting-edge devices that are shaping the future of technology and innovation.</p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="#" class="card-footer-item">Read More</a>
+                                <p>Discover the cutting-edge devices that are shaping the future of technology and innovation.</p>
+                                <p>Author: Jane Smith</p>
+                                <p>Date: November 12, 2023</p>
                             </div>
                         </div>
                     </div>
-                    <div class="column is-half" data-article="3">
+                    <div class="column is-half">
                         <div class="card">
                             <div class="card-content">
                                 <p class="title is-4">Article about AI</p>
                                 <p>Unveiling the transformative impact and applications of Artificial Intelligence in various industries and everyday life.</p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="#" class="card-footer-item">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column is-half" data-article="4">
-                        <div class="card">
-                            <div class="card-content">
-                                <p class="title is-4">Article about the Relationship between Green Energy and Technology</p>
-                                <p>Examining the symbiotic relationship between the adoption of green energy solutions and technological advancements for a sustainable future.</p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="#" class="card-footer-item">Read More</a>
+                                <p>Author: Alex Johnson</p>
+                                <p>Date: November 12, 2023</p>
                             </div>
                         </div>
                     </div>
@@ -173,7 +158,85 @@
         </div>
     </div>
 
+    <div id="addCategoryModal" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="box">
+                <h2 class="title is-4 has-text-centered">Add New Category</h2>
+                <form id="addCategoryForm" onsubmit="submitCategoryForm(event)">
+                    <div class="field">
+                        <label class="label">Category Name</label>
+                        <div class="control">
+                            <input class="input" type="text" id="categoryName" placeholder="Enter category name" required>
+                        </div>
+                    </div>
+
+                    <div class="field is-grouped is-grouped-centered mt-4">
+                        <div class="control">
+                            <button type="submit" class="button is-primary">Add Category</button>
+                        </div>
+                        <div class="control">
+                            <button type="button" class="button is-danger" onclick="closeAddCategoryModal()">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close" onclick="closeAddCategoryModal()"></button>
+    </div>
+
     <script>
+        async function fetchCategories() {
+            try {
+                const response = await fetch('/api/categories');
+                const categories = await response.json();
+                const categoryList = document.getElementById('categoryList');
+                categoryList.innerHTML = '<h2 class="title is-4">Categories</h2>';
+                categories.forEach(category => {
+                    categoryList.innerHTML += `<span class="tag is-primary category-label">#${category.name}</span>`;
+                });
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        async function fetchLatestPosts() {
+            try {
+                const response = await fetch('/api/posts/latest');
+                const posts = await response.json();
+                const latestPosts = document.getElementById('latestPosts');
+                latestPosts.innerHTML = '<h2 class="title is-4">Latest Posts</h2>';
+                posts.slice(0, 3).forEach(post => {
+                    latestPosts.innerHTML += `<div class="column is-half">
+                        <div class="card">
+                            <div class="card-content">
+                                <p class="title is-4">${post.title}</p>
+                                <p>${post.shortDescription}</p>
+                                <p>Author: ${post.author}</p>
+                                <p>Date: ${post.publicationDate}</p>
+                            </div>
+                        </div>
+                    </div>`;
+                });
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        const addCategoryForm = document.getElementById('addCategoryForm');
+        addCategoryForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const categoryName = document.getElementById('categoryName').value;
+            console.log('Category Name:', categoryName);
+            closeAddCategoryModal();
+            fetchCategories();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchCategories();
+            fetchLatestPosts();
+        });
+
         function toggleModal() {
             const modal = document.getElementById('modal');
             modal.classList.toggle('is-active');
@@ -201,6 +264,16 @@
             articlesContainer.prepend(newArticle);
 
             toggleModal();
+        }
+
+        function openAddCategoryModal() {
+            const modal = document.getElementById('addCategoryModal');
+            modal.classList.add('is-active');
+        }
+
+        function closeAddCategoryModal() {
+            const modal = document.getElementById('addCategoryModal');
+            modal.classList.remove('is-active');
         }
     </script>
 </body>
