@@ -8,27 +8,8 @@
     <title>Welcome to My Tech Blog</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        .modal-card {
-            max-width: 50%;
-        }
-
-        #addCategoryModal {
-            max-width: 50%;
-            margin: auto;
-        }
-
-        .category-labels {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 1rem;
-        }
-
-        .category-label {
-            margin: 0.5rem;
-        }
-    </style>
+    <link rel="stylesheet" href="../public/style.css"
+    <script src="../public/index.js" defer></script>
 </head>
 
 <body>
@@ -46,13 +27,17 @@
                 <button onclick="openAddCategoryModal()" class="button is-primary is-rounded">Add New Category</button>
             </div>
 
+            <%- include('addArticleModal') %>
+            <%- include('editPostModal') %>
+            <%- include('addCategoryModal') %>
+            <%- include('editCategoryModal') %>
+
             <div id="categoryList" class="has-text-centered mt-6 category-labels">
                 <h2 class="title is-3">All Categories</h2>
                 <span class="tag is-primary category-label">#5g</span>
                 <span class="tag is-primary category-label">#devices</span>
                 <span class="tag is-primary category-label">#ai</span>
                 <span class="tag is-primary category-label">#greenenergy</span>
-                <!-- Other categories will be dynamically inserted here -->
             </div>
 
             <div id="latestPosts" class="has-text-centered mt-6">
@@ -199,7 +184,7 @@
                 console.error(error);
             }
         }
-
+    
         async function fetchLatestPosts() {
             try {
                 const response = await fetch('/api/posts/latest');
@@ -222,33 +207,48 @@
                 console.error(error);
             }
         }
-
+    
         const addCategoryForm = document.getElementById('addCategoryForm');
-        addCategoryForm.addEventListener('submit', function (event) {
+        addCategoryForm.addEventListener('submit', async function (event) {
             event.preventDefault();
             const categoryName = document.getElementById('categoryName').value;
             console.log('Category Name:', categoryName);
             closeAddCategoryModal();
-            fetchCategories();
+            try {
+                const response = await fetch('/api/categories', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name: categoryName })
+                });
+                if (response.ok) {
+                    fetchCategories(); // Refresh the categories after adding a new one
+                } else {
+                    throw new Error('Failed to add category');
+                }
+            } catch (error) {
+                console.error(error);
+            }
         });
-
+    
         document.addEventListener('DOMContentLoaded', () => {
             fetchCategories();
             fetchLatestPosts();
         });
-
+    
         function toggleModal() {
             const modal = document.getElementById('modal');
             modal.classList.toggle('is-active');
         }
-
+    
         function submitForm(event) {
             event.preventDefault();
             const category = document.getElementById('categorySelect').value;
             const author = document.getElementById('authorInput').value;
             const subject = document.getElementById('subjectInput').value;
             const article = document.getElementById('articleInput').value;
-
+    
             const articlesContainer = document.querySelector('.is-multiline');
             const newArticle = document.createElement('div');
             newArticle.classList.add('column', 'is-half');
@@ -262,20 +262,22 @@
                 </div>
             `;
             articlesContainer.prepend(newArticle);
-
+    
             toggleModal();
         }
-
+    
         function openAddCategoryModal() {
             const modal = document.getElementById('addCategoryModal');
             modal.classList.add('is-active');
         }
-
+    
         function closeAddCategoryModal() {
             const modal = document.getElementById('addCategoryModal');
             modal.classList.remove('is-active');
         }
     </script>
+    
+    
 </body>
 
 </html>

@@ -1,40 +1,31 @@
 const express = require('express');
 const path = require('path');
-const app = express();
-const { mongoClient } = require('mongodb');
+const { MongoClient } = require('mongodb');
+require('dotenv').config(); 
+const { ConnectionString } = require('mongodb-connection-string-url');
 
+const app = express();
 const uri = process.env.MONGODB_URI;
+
+if (!uri) {
+  console.error('MONGODB_URI is not defined.');
+  process.exit(1);
+}
+
+console.log('URI:', uri);
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-async function run() {
+async function connectToMongoDB() {
   try {
     await client.connect();
     console.log('Connected to the database');
   } catch (err) {
     console.error(err);
-  } finally {
-    await client.close();
-  }
-}
-run().catch(console.dir);
-
-async function run() {
-  try {
-    await client.connect();
-    const database = client.db('yourDatabaseName');
-    const collection = database.collection('yourCollectionName');
-
-    const result = await collection.insertOne({ key: 'value' });
-    console.log('Document inserted with _id:', result.insertedId);
-  } catch (err) {
-    console.error(err);
-  } finally {
-    await client.close();
+    process.exit(1);
   }
 }
 
-run().catch(console.dir);
-
+connectToMongoDB().catch(console.dir);
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
