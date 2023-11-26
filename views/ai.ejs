@@ -6,11 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Understanding Artificial Intelligence: A Comprehensive Guide</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <script src="scripts/script.js" defer></script>
 </head>
 
 <body class="bg-gray-100">
     <%- include('nav') %>
 
+    <div class="buttons is-right">
+        <button onclick="openEditModal()" class="button is-primary is-pulled-right">Edit Article</button>
+        <button class="button is-danger" onclick="deleteArticle()">Delete</button>
+    </div>
+    <div id="editModal" class="modal">
+        <div class="modal-background" onclick="closeModal()"></div>
+        <div class="modal-content box">
+            <button class="delete" aria-label="close" onclick="closeModal()"></button>
+            <h2 class="title is-4 has-text-centered">Edit Article</h2>
+            <div class="field">
+                <label class="label">Title</label>
+                <div class="control">
+                    <input class="input" type="text" id="editTitle" placeholder="Enter new title">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Content</label>
+                <div class="control">
+                    <textarea class="textarea" id="editContent" placeholder="Enter new content"></textarea>
+                </div>
+            </div>
+            <div class="field is-grouped is-grouped-centered">
+                <div class="control">
+                    <button class="button is-primary" onclick="saveChanges()">Save Changes</button>
+                </div>
+            </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close" onclick="closeModal()"></button>
+    </div>
+              
     <div class="container mx-auto mt-6">
         <div class="columns is-centered">
             <div class="column is-8">
@@ -18,7 +49,8 @@
                     <img src="/assets/ai.jpg" alt="Artificial Intelligence">
                 </figure>
                 <div class="box">
-                    <h1 class="title is-3">Understanding Artificial Intelligence: A Comprehensive Guide</h1>
+                    <h1 class="title is-3 article-title deleteTitle">Understanding Artificial Intelligence: A Comprehensive Guide</h1>
+                    <div class="article-content">
                     <p class="subtitle is-5 mt-4">Artificial intelligence (AI) has become one of the most transformative technologies of the 21st century, shaping the way we interact with machines and changing the landscape of various industries. With its growing impact on our daily lives, it's important to grasp the fundamentals of AI and its applications.</p>
                     <p class="subtitle is-5 mt-4">AI refers to the simulation of human intelligence in machines, enabling them to perform tasks that typically require human intelligence. It involves the creation of intelligent agents that can perceive their environment and take actions to achieve specific goals. AI has found applications in diverse fields such as healthcare, finance, transportation, and entertainment, revolutionizing the way we live and work.</p>
                     <h2 class="title is-4 mt-4">Types of Artificial Intelligence</h2>
@@ -41,10 +73,12 @@
                     <p>The future of AI holds great potential, with opportunities for innovation and transformation across diverse sectors. By harnessing the power of artificial intelligence responsibly, we can pave the way for a more intelligent, efficient, and sustainable future.</p>
                 </div>
             </div>
+            </div>
         </div>
     </div>
 
     <%- include('footer') %>
+           
 </body>
 
 </html>

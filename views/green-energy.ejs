@@ -6,11 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Green Energy and Technology</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <script src="scripts/script.js" defer></script>
 </head>
 
 <body class="bg-gray-100">
     <%- include('nav') %>
 
+    <div class="buttons is-right">
+        <button class="button is-primary" onclick="openEditModal()">Edit</button>
+        <button class="button is-danger" onclick="deleteArticle()">Delete</button>
+    </div>
+      
+    <div id="editModal" class="modal">
+        <div class="modal-background" onclick="closeModal()"></div>
+        <div class="modal-content box">
+            <button class="delete" aria-label="close" onclick="closeModal()"></button>
+            <h2 class="title is-4 has-text-centered">Edit Article</h2>
+            <div class="field">
+                <label class="label">Title</label>
+                <div class="control">
+                    <input class="input" type="text" id="editTitle" placeholder="Enter new title">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Content</label>
+                <div class="control">
+                    <textarea class="textarea" id="editContent" placeholder="Enter new content"></textarea>
+                </div>
+            </div>
+            <div class="field is-grouped is-grouped-centered">
+                <div class="control">
+                    <button class="button is-primary" onclick="saveChanges()">Save Changes</button>
+                </div>
+            </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close" onclick="closeModal()"></button>
+    </div>
     <div class="container mx-auto mt-6">
         <div class="columns is-centered">
             <div class="column is-8">
@@ -18,11 +49,13 @@
                     <img src="/assets/green.jpg" alt="Green Energy" />
                 </figure>
                 <div class="box">
-                    <h1 class="title is-3">Green Energy and Technology</h1>
+                    <h1 class="title is-3 article-title deleteTitle">Green Energy and Technology</h1>
+                  <div class="article-content">
                     <p class="subtitle is-5 mt-4">The intersection of green energy and technology has become a focal point in the ongoing effort to combat climate change and environmental degradation. With the advent of renewable energy sources such as solar, wind, and hydroelectric power, the potential for creating a sustainable and eco-friendly energy infrastructure has never been greater.</p>
                     <p class="subtitle is-5 mt-4">Technology plays a crucial role in the development and optimization of green energy solutions, enabling the efficient harnessing, storage, and distribution of clean energy. Innovations in battery technology, smart grid systems, and energy-efficient appliances are paving the way for a future that relies less on fossil fuels and more on sustainable, environmentally friendly alternatives.</p>
                     <p class="subtitle is-5 mt-4">As the world grapples with the challenges posed by climate change, the integration of green energy and technology represents a promising path forward, one that emphasizes the importance of sustainability, conservation, and the preservation of our planet's natural resources.</p>
                 </div>
+              </div>
             </div>
         </div>
     </div>

@@ -6,10 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Devices of the Future</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <script src="scripts/script.js" defer></script>
 </head>
 
 <body class="bg-gray-100">
     <%- include('nav') %>
+
+    <div class="buttons is-right">
+        <button class="button is-primary" onclick="openEditModal()">Edit</button>
+        <button class="button is-danger" onclick="deleteArticle()">Delete</button>
+    </div>
+
+    <div id="editModal" class="modal">
+        <div class="modal-background" onclick="closeModal()"></div>
+        <div class="modal-content box">
+            <button class="delete" aria-label="close" onclick="closeModal()"></button>
+            <h2 class="title is-4 has-text-centered">Edit Article</h2>
+            <div class="field">
+                <label class="label">Title</label>
+                <div class="control">
+                    <input class="input" type="text" id="editTitle" placeholder="Enter new title">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Content</label>
+                <div class="control">
+                    <textarea class="textarea" id="editContent" placeholder="Enter new content"></textarea>
+                </div>
+            </div>
+            <div class="field is-grouped is-grouped-centered">
+                <div class="control">
+                    <button class="button is-primary" onclick="saveChanges()">Save Changes</button>
+                </div>
+            </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close" onclick="closeModal()"></button>
+    </div>
 
     <div class="container mx-auto mt-6">
         <div class="columns is-centered">
@@ -18,16 +50,18 @@
                     <img src="/assets/future-devices.jpg" alt="Devices of the future">
                 </figure>
                 <div class="box">
-                    <h1 class="title is-3">Devices of the Future</h1>
+                    <h1 class="title is-3 article-title deleteTitle">Devices of the Future</h1>
+                    <div class="article-content">
                     <p class="subtitle is-5 mt-4">As technological advancements continue to accelerate, the future of devices appears to be one defined by seamless integration, intelligent automation, and unparalleled connectivity. From smart home appliances and wearable technology to advanced robotics and virtual reality, the devices of the future are set to redefine the way we interact with the world around us.</p>
                     <p class="subtitle is-5 mt-4">With the rise of the Internet of Things (IoT) and artificial intelligence, everyday gadgets are becoming increasingly interconnected and intelligent, capable of adapting to our preferences and needs in real time. The convergence of hardware and software innovations is paving the way for a new era of personalized, immersive, and efficient technology experiences.</p>
                     <p class="subtitle is-5 mt-4">From self-driving cars and augmented reality devices to smart health monitors and sustainable energy solutions, the devices of the future hold the promise of transforming the way we live, work, and play, ushering in a world where technology is seamlessly woven into the fabric of our daily lives.</p>
+                </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <%- include('footer') %>
+    <% - include('footer') %>
 </body>
 
 </html>

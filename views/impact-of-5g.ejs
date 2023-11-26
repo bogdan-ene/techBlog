@@ -7,10 +7,43 @@
     <title>The Impact of 5G Technology on the Future of IoT and Connectivity</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="scripts/script.js" defer></script>
 </head>
 
 <body class="bg-gray-100">
     <%- include('nav') %>
+
+    <div class="buttons is-right">
+        <button class="button is-primary" onclick="openEditModal()">Edit</button>
+        <button class="button is-danger" onclick="deleteArticle()">Delete</button>
+    </div>
+      
+    <div id="editModal" class="modal">
+        <div class="modal-background" onclick="closeModal()"></div>
+        <div class="modal-content box">
+            <button class="delete" aria-label="close" onclick="closeModal()"></button>
+            <h2 class="title is-4 has-text-centered">Edit Article</h2>
+            <div class="field">
+                <label class="label">Title</label>
+                <div class="control">
+                    <input class="input" type="text" id="editTitle" placeholder="Enter new title">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Content</label>
+                <div class="control">
+                    <textarea class="textarea" id="editContent" placeholder="Enter new content"></textarea>
+                </div>
+            </div>
+            <div class="field is-grouped is-grouped-centered">
+                <div class="control">
+                    <button class="button is-primary" onclick="saveChanges()">Save Changes</button>
+                </div>
+            </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close" onclick="closeModal()"></button>
+    </div>
+
     <div class="container mx-auto mt-6">
         <div class="columns is-centered">
             <div class="column is-8">
@@ -18,9 +51,11 @@
                     <img src="/assets/5g.jpg" alt="5G Network">
                 </figure>
                 <div class="box">
-                    <h1 class="title is-3">The Impact of 5G Technology on the Future of IoT and Connectivity</h1>
+                    <h1 class="title is-3 article-title deleteTitle">The Impact of 5G Technology on the Future of IoT and Connectivity</h1>
+                  <div class="article-content">
                     <p class="subtitle is-5 mt-4 has-text-centered">In the era of rapid technological advancement, the emergence of 5G technology has brought forth unprecedented opportunities for the Internet of Things (IoT) and connectivity. With its remarkable bandwidth and minimal latency, 5G is poised to revolutionize the way devices interact and exchange data, paving the way for a new era of seamless connectivity and real-time information processing.</p>
                     <p class="subtitle is-5 mt-4 has-text-centered">As industries harness the potential of 5G, the implications for IoT applications are profound, enabling the development of innovative solutions across diverse sectors, including healthcare, manufacturing, transportation, and more. The integration of 5G technology not only facilitates the proliferation of interconnected devices but also lays the groundwork for the implementation of advanced technologies such as autonomous vehicles, smart cities, and immersive virtual experiences.</p>
+                  </div>
                 </div>
             </div>
         </div>

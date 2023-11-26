@@ -8,7 +8,7 @@
     <title>Welcome to My Tech Blog</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="../public/style.css"
+    <link rel="stylesheet" href="../public/style.css">
     <script src="../public/index.js" defer></script>
 </head>
 
@@ -26,11 +26,6 @@
             <div class="has-text-centered mt-5">
                 <button onclick="openAddCategoryModal()" class="button is-primary is-rounded">Add New Category</button>
             </div>
-
-            <%- include('addArticleModal') %>
-            <%- include('editPostModal') %>
-            <%- include('addCategoryModal') %>
-            <%- include('editCategoryModal') %>
 
             <div id="categoryList" class="has-text-centered mt-6 category-labels">
                 <h2 class="title is-3">All Categories</h2>
@@ -82,7 +77,9 @@
         </div>
     </section>
 
-    <%- include('footer') %>
+    <%-
+    include('footer')
+    %>
 
     <div id="modal" class="modal">
         <div class="modal-background" onclick="toggleModal()"></div>
@@ -171,37 +168,13 @@
     </div>
 
     <script>
-        async function fetchCategories() {
+        function fetchCategories() {
             try {
-                const response = await fetch('/api/categories');
-                const categories = await response.json();
+                const storedCategories = JSON.parse(localStorage.getItem('categories')) || [];
                 const categoryList = document.getElementById('categoryList');
                 categoryList.innerHTML = '<h2 class="title is-4">Categories</h2>';
-                categories.forEach(category => {
-                    categoryList.innerHTML += `<span class="tag is-primary category-label">#${category.name}</span>`;
-                });
-            } catch (error) {
-                console.error(error);
-            }
-        }
-    
-        async function fetchLatestPosts() {
-            try {
-                const response = await fetch('/api/posts/latest');
-                const posts = await response.json();
-                const latestPosts = document.getElementById('latestPosts');
-                latestPosts.innerHTML = '<h2 class="title is-4">Latest Posts</h2>';
-                posts.slice(0, 3).forEach(post => {
-                    latestPosts.innerHTML += `<div class="column is-half">
-                        <div class="card">
-                            <div class="card-content">
-                                <p class="title is-4">${post.title}</p>
-                                <p>${post.shortDescription}</p>
-                                <p>Author: ${post.author}</p>
-                                <p>Date: ${post.publicationDate}</p>
-                            </div>
-                        </div>
-                    </div>`;
+                storedCategories.forEach(category => {
+                    categoryList.innerHTML += `<span class="tag is-primary category-label">#${category}</span>`;
                 });
             } catch (error) {
                 console.error(error);
@@ -209,32 +182,30 @@
         }
     
         const addCategoryForm = document.getElementById('addCategoryForm');
-        addCategoryForm.addEventListener('submit', async function (event) {
+        addCategoryForm.addEventListener('submit', function (event) {
             event.preventDefault();
-            const categoryName = document.getElementById('categoryName').value;
-            console.log('Category Name:', categoryName);
-            closeAddCategoryModal();
-            try {
-                const response = await fetch('/api/categories', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ name: categoryName })
-                });
-                if (response.ok) {
-                    fetchCategories(); // Refresh the categories after adding a new one
+            const categoryName = document.getElementById('categoryName').value.trim();
+    
+            if (categoryName) {
+                const storedCategories = JSON.parse(localStorage.getItem('categories')) || [];
+                const isCategoryExists = storedCategories.some(category => category === categoryName);
+    
+                if (!isCategoryExists) {
+                    storedCategories.push(categoryName);
+                    localStorage.setItem('categories', JSON.stringify(storedCategories));
+                    fetchCategories();
                 } else {
-                    throw new Error('Failed to add category');
+                    alert('Category already exists!');
                 }
-            } catch (error) {
-                console.error(error);
+            } else {
+                alert('Please enter a category name!');
             }
+    
+            closeAddCategoryModal();
         });
     
         document.addEventListener('DOMContentLoaded', () => {
             fetchCategories();
-            fetchLatestPosts();
         });
     
         function toggleModal() {
@@ -276,6 +247,7 @@
             modal.classList.remove('is-active');
         }
     </script>
+    
     
     
 </body>
