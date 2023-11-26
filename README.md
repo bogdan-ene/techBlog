@@ -13,7 +13,7 @@ A tech blog project built with Node.js and Express.
 
 1. Clone the repository.
     ```sh
-    git clone https://github.com/bogdan-ene/my-tech-blog.git
+    git clone https://github.com/bogdan-ene/techBlog.git
     ```
 
 2. Install dependencies.
