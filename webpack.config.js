@@ -15,6 +15,8 @@ module.exports = {
       crypto: require.resolve('crypto-browserify'),
       timers: require.resolve('timers-browserify'),
       os: require.resolve('os-browserify/browser'),
+      url: require.resolve('url/'), 
+      util: require.resolve('util/'),
     },
   },
 };
