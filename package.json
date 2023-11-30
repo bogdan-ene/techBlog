@@ -28,7 +28,7 @@
   },
   "name": "tech-blog",
   "version": "1.0.0",
-  "description": "A tech blog designed with NodeJS where are multiple tech articles that you can view and comment on them as a user",
+  "description": "A tech blog designed with NodeJS where multiple tech articles can be viewed and commented on as a user",
   "main": "server.js",
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^6.4.2",
@@ -39,7 +39,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "github.com/bogdan-ene/techBlog"
+    "url": "https://github.com/bogdan-ene/techBlog.git"
   },
   "keywords": [
     "tech",
