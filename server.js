@@ -5,23 +5,23 @@ require("dotenv").config();
 const { ConnectionString } = require("mongodb-connection-string-url");
 
 const app = express();
-const uri = process.env.MONGODB_URI;
+// const uri = process.env.MONGODB_URI;
 
-const client = new MongoClient(uri, {
-  ssl: true,
-});
+// const client = new MongoClient(uri, {
+//   ssl: true,
+// });
 
-async function connectToMongoDB() {
-  try {
-    await client.connect();
-    console.log("Connected to the database");
-  } catch (err) {
-    console.error(err);
-    process.exit(1);
-  }
-}
+// async function connectToMongoDB() {
+//   try {
+//     await client.connect();
+//     console.log("Connected to the database");
+//   } catch (err) {
+//     console.error(err);
+//     process.exit(1);
+//   }
+// }
 
-connectToMongoDB().catch(console.dir);
+// connectToMongoDB().catch(console.dir);
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
