@@ -8,7 +8,7 @@ module.exports = {
   },
   resolve: {
     fallback: {
-      buffer: require.resolve("buffer/"),
+      buffer: require.resolve("buffer"),
       http: require.resolve("stream-http"),
       https: require.resolve("https-browserify"),
       stream: require.resolve("stream-browserify"),
