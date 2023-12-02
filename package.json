@@ -23,7 +23,7 @@
   },
   "scripts": {
     "dev": "nodemon server.js",
-    "start": "node server.js",
+    "start": "node server.js"
   },
   "name": "tech-blog",
   "version": "1.0.0",
