@@ -125,7 +125,7 @@ app.delete("/future-devices/:id", (req, res) => {
     `Deleted comment with ID ${commentId} on the Devices of the future article`
   );
 });
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
